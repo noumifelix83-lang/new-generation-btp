@@ -16,7 +16,7 @@ export const services = [
       'Réception des ouvrages',
       'Assistance technique sur chantier',
     ],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'genie-electrique',
@@ -35,7 +35,7 @@ export const services = [
       'Systèmes d\'éclairage LED',
       'Groupe électrogène et énergie solaire',
     ],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/13820151/pexels-photo-13820151.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'architecture',
@@ -54,7 +54,7 @@ export const services = [
       'Suivi architectural des travaux',
       'Design d\'intérieur et aménagement',
     ],
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/8482835/pexels-photo-8482835.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'permis-batir',
@@ -73,7 +73,7 @@ export const services = [
       'Suivi et relance administratifs',
       'Obtention du certificat de conformité',
     ],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/28426637/pexels-photo-28426637.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'topographie',
@@ -92,7 +92,7 @@ export const services = [
       'Cubatures et calculs de volume',
       'Plans et cartes topographiques',
     ],
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/11174197/pexels-photo-11174197.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'renovation',
@@ -111,7 +111,7 @@ export const services = [
       'Ravalement de façades',
       'Mise aux normes électriques et sanitaires',
     ],
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/8278899/pexels-photo-8278899.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'froid-clim',
@@ -130,7 +130,7 @@ export const services = [
       'Chambres froides et réfrigération',
       'Maintenance préventive et curative',
     ],
-    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/4981794/pexels-photo-4981794.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     id: 'immobilier',
@@ -149,7 +149,7 @@ export const services = [
       'Assistance juridique et notariale',
       'Gestion de patrimoine immobilier',
     ],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/13041118/pexels-photo-13041118.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 

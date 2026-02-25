@@ -273,7 +273,7 @@ export default function CataloguePage() {
       {/* Hero */}
       <section className="py-20 bg-gradient-to-br from-green-950 to-green-700 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&auto=format&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/8293670/pexels-photo-8293670.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
             Nouveauté

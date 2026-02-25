@@ -44,7 +44,7 @@ function ServicesListPage() {
       {/* Hero */}
       <section className="py-20 bg-gradient-to-br from-green-950 to-green-800 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&auto=format&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">Expertise Multi-Disciplines</span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>Nos Services</h1>

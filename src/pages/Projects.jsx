@@ -128,7 +128,7 @@ export default function ProjectsPage() {
       {/* Hero */}
       <section className="py-20 bg-gradient-to-br from-green-950 to-green-800 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&auto=format&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
             Notre Portfolio

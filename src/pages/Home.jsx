@@ -84,7 +84,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&auto=format&fit=crop)',
+            backgroundImage: 'url(https://images.pexels.com/photos/5298215/pexels-photo-5298215.jpeg?auto=compress&cs=tinysrgb&w=1600)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -258,7 +258,7 @@ export default function HomePage() {
             <AnimatedSection>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&auto=format&fit=crop"
+                  src="https://images.pexels.com/photos/8961125/pexels-photo-8961125.jpeg?auto=compress&cs=tinysrgb&w=700"
                   alt="Chantier New Generation BTP"
                   className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]"
                 />
@@ -417,7 +417,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative min-h-48 lg:min-h-0">
                   <img
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&auto=format&fit=crop"
+                    src="https://images.pexels.com/photos/8482835/pexels-photo-8482835.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt="Plans architecturaux"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
