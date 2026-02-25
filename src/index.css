@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply font-sans text-gray-800 antialiased;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold px-5 py-3 rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-md hover:shadow-lg touch-manipulation;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 active:bg-gray-100 text-green-900 font-semibold px-5 py-3 rounded-lg border-2 border-green-900 transition-all duration-300 inline-flex items-center justify-center gap-2 touch-manipulation;
+  }
+  .btn-outline-white {
+    @apply border-2 border-white text-white hover:bg-white hover:text-green-900 active:bg-white/90 font-semibold px-5 py-3 rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 touch-manipulation;
+  }
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+  .section-subtitle {
+    @apply text-base sm:text-lg text-gray-600 mb-10 sm:mb-12 max-w-2xl;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-white text-gray-800 text-base;
+  }
+  /* Prevent font zoom on iOS */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0fdf4; }
+::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #15803d; }
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
