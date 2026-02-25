@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import Logo from './Logo';
 
 const services = [
   { label: 'Génie Civil', to: '/services/genie-civil' },
@@ -21,9 +22,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                NG
-              </div>
+              <Logo light={true} size={48} />
               <div>
                 <div className="font-bold text-base">New Generation</div>
                 <div className="text-green-400 text-sm">Engineering BTP MS</div>

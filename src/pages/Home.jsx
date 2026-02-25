@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { services } from '../data/services';
 import { projects } from '../data/projects';
+import Logo from '../components/Logo';
 
 const iconMap = { Building2, Zap, Layers, FileCheck, Map, Wrench, Wind, Home };
 
@@ -93,6 +94,23 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
+              {/* Hero Logo */}
+              <div className="flex items-center gap-4 mb-8">
+                <Logo light={true} size={72} />
+                <div>
+                  <div className="text-white font-extrabold text-xl tracking-wide leading-tight"
+                       style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>
+                    NEW GENERATION
+                  </div>
+                  <div className="text-green-300 font-semibold text-sm tracking-widest uppercase">
+                    Engineering BTP MS
+                  </div>
+                  <div className="text-green-400/80 text-xs mt-0.5">
+                    Bureau d'Étude Multi-Services • Fondé en 2016
+                  </div>
+                </div>
+              </div>
+
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
                 <Star size={14} className="fill-green-400 text-green-400" />

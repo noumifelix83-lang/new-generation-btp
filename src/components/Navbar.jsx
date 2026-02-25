@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
+import Logo from './Logo';
 
 const navLinks = [
   { to: '/', label: 'Accueil' },
@@ -46,9 +47,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-green-900 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-green-500 transition-colors duration-300">
-              NG
-            </div>
+            <Logo light={isTransparent} size={44} />
             <div>
               <div className={`font-bold text-sm leading-tight transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-green-900'}`}>
                 New Generation
