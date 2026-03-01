@@ -100,7 +100,7 @@ function ServicesListPage() {
                     </div>
 
                     {/* Content */}
-                    <div className="pt-4 pb-5 px-1">
+                    <div className="pt-4 pb-5 px-2">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-7 h-7 rounded bg-green-900 flex items-center justify-center shrink-0 group-hover:bg-green-700 transition-colors">
                           <Icon size={14} className="text-white" />

@@ -48,7 +48,7 @@ export default function HomePage() {
     <div className="min-h-screen">
 
       {/* ========== HERO ========== */}
-      <section className="relative text-white pt-28 pb-24 overflow-hidden">
+      <section className="relative text-white pt-20 pb-14 sm:pt-28 sm:pb-24 overflow-hidden">
         {/* Background image */}
         <div
           className="absolute inset-0"
@@ -89,9 +89,13 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {stats.map((s, i) => (
-              <div key={i} className={`py-8 px-4 text-center ${i < 3 ? 'border-b lg:border-b-0 lg:border-r border-gray-100' : ''} ${i === 1 ? 'border-r border-gray-100' : ''}`}>
-                <div className="text-3xl font-bold text-green-900">{s.value}</div>
-                <div className="text-gray-500 text-sm mt-1">{s.label}</div>
+              <div key={i} className={`py-6 sm:py-8 px-4 text-center border-gray-100 ${
+                i === 0 ? 'border-r border-b lg:border-b-0' :
+                i === 1 ? 'border-b lg:border-b-0 lg:border-r' :
+                i === 2 ? 'border-r lg:border-r' : ''
+              }`}>
+                <div className="text-2xl sm:text-3xl font-bold text-green-900">{s.value}</div>
+                <div className="text-gray-500 text-xs sm:text-sm mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -135,7 +139,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Content */}
-                    <div className="pt-4 pb-5 px-1">
+                    <div className="pt-4 pb-5 px-2">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-7 h-7 rounded bg-green-900 flex items-center justify-center shrink-0 group-hover:bg-green-700 transition-colors">
                           <Icon size={14} className="text-white" />
