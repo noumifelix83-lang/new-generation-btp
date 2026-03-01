@@ -42,9 +42,9 @@ function PlanCard({ plan, onSelect }) {
           </span>
         </div>
       )}
-      <div className="relative overflow-hidden aspect-video">
-        <img src={plan.image} alt={plan.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-green-950/70 via-transparent to-transparent" />
+      <div className="relative overflow-hidden aspect-[4/3]">
+        <img src={plan.image} alt={plan.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div className="absolute inset-0 bg-green-950/0 group-hover:bg-green-950/30 transition-colors duration-300" />
         <div className="absolute bottom-3 left-3 right-3">
           <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">{plan.style}</span>
         </div>
@@ -271,27 +271,27 @@ export default function CataloguePage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="py-20 bg-gradient-to-br from-green-950 to-green-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/8293670/pexels-photo-8293670.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+      <section className="relative py-16 sm:py-20 text-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/8293670/pexels-photo-8293670.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-green-950/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            Nouveauté
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>
-            Catalogue Architectural
-          </h1>
-          <p className="text-green-200 text-lg max-w-2xl mx-auto mb-6">
-            Choisissez parmi nos plans architecturaux, personnalisez selon vos besoins et obtenez une estimation de coût instantanée.
+          <p className="text-green-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Plans Architecturaux</p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Catalogue Architectural</h1>
+          <p className="text-green-200 text-base max-w-2xl mx-auto mb-6">
+            Choisissez parmi nos plans, personnalisez selon vos besoins et obtenez une estimation de coût instantanée.
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {['✓ Plans certifiés', '✓ Personnalisables', '✓ Estimation instantanée', '✓ Permis inclus'].map((f) => (
-              <span key={f} className="bg-white/10 text-white text-sm px-4 py-1.5 rounded-full border border-white/20">{f}</span>
+          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+            {['Plans certifiés', 'Personnalisables', 'Estimation instantanée', 'Permis inclus'].map((f) => (
+              <span key={f} className="bg-white/10 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-full border border-white/20">✓ {f}</span>
             ))}
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60H1440V20C1440 20 1100 60 720 35C340 10 0 45 0 45V60Z" fill="white" /></svg>
         </div>
       </section>
 
@@ -320,6 +320,19 @@ export default function CataloguePage() {
       {/* Filter & Plans */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Section header */}
+          <AnimatedSection className="text-center mb-10">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gray-300" />
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Plans</span>
+              <div className="h-px w-12 bg-gray-300" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-green-900 uppercase tracking-wide">
+              Nos Plans Architecturaux
+            </h2>
+          </AnimatedSection>
+
           {/* Type Filter */}
           <AnimatedSection className="flex flex-wrap gap-3 mb-10 justify-center">
             {planTypes.map((type) => (

@@ -8,7 +8,7 @@ import { services, getServiceById } from '../data/services';
 
 const iconMap = { Building2, Zap, Layers, FileCheck, Map, Wrench, Wind, Home };
 
-function AnimatedSection({ children, className = '', delay = 0 }) {
+function FadeIn({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,8 +26,8 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
     const el = ref.current;
     if (el) {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
       observer.observe(el);
     }
     return () => { if (el) observer.unobserve(el); };
@@ -41,53 +41,83 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 function ServicesListPage() {
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero */}
-      <section className="py-20 bg-gradient-to-br from-green-950 to-green-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+
+      {/* Hero with background image */}
+      <section className="relative py-16 sm:py-20 text-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-green-950/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">Expertise Multi-Disciplines</span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>Nos Services</h1>
-          <p className="text-green-200 text-lg max-w-2xl mx-auto">
-            De la conception à la livraison, notre équipe pluridisciplinaire couvre tous les aspects de vos projets de construction et d'ingénierie.
+          <p className="text-green-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Expertise Multi-Disciplines</p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Nos Services</h1>
+          <p className="text-green-200 text-base max-w-2xl mx-auto">
+            De la conception à la livraison, notre équipe pluridisciplinaire couvre tous les aspects de vos projets.
           </p>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60H1440V20C1440 20 1100 60 720 35C340 10 0 45 0 45V60Z" fill="white" /></svg>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Services — image cards grid (3 cols desktop) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gray-300" />
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Expertise</span>
+              <div className="h-px w-12 bg-gray-300" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-green-900 uppercase tracking-wide">
+              Nos Services
+            </h2>
+          </div>
+
+          {/* Cards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || Building2;
               return (
-                <AnimatedSection key={service.id} delay={i * 80}>
-                  <div className="card group flex gap-6 p-6 hover:-translate-y-1 transition-transform duration-300">
-                    <div className={`shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon size={28} className="text-white" />
+                <FadeIn key={service.id} delay={i * 50}>
+                  <Link
+                    to={`/services/${service.id}`}
+                    className="group flex flex-col bg-white hover:shadow-lg transition-shadow duration-300"
+                  >
+                    {/* Image */}
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {/* Dark overlay on hover */}
+                      <div className="absolute inset-0 bg-green-950/0 group-hover:bg-green-950/30 transition-colors duration-300" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-green-900 mb-2">{service.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.description}</p>
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {service.features.slice(0, 3).map((f, j) => (
-                          <span key={j} className={`text-xs px-2 py-0.5 rounded-full ${service.bgColor} ${service.textColor} font-medium`}>
-                            {f}
-                          </span>
-                        ))}
+
+                    {/* Content */}
+                    <div className="pt-4 pb-5 px-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-7 h-7 rounded bg-green-900 flex items-center justify-center shrink-0 group-hover:bg-green-700 transition-colors">
+                          <Icon size={14} className="text-white" />
+                        </div>
+                        <h3 className="font-bold text-green-900 text-sm uppercase tracking-wide group-hover:text-green-700 transition-colors">
+                          {service.title}
+                        </h3>
                       </div>
-                      <Link
-                        to={`/services/${service.id}`}
-                        className="inline-flex items-center gap-1 text-green-500 font-semibold text-sm hover:gap-2 transition-all group-hover:text-green-600"
-                      >
-                        En savoir plus <ArrowRight size={16} />
-                      </Link>
+                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
+                        {service.shortDesc}
+                      </p>
+                      <div className="flex items-center gap-1 text-green-600 text-xs font-semibold mt-3 group-hover:gap-2 transition-all">
+                        En savoir plus <ArrowRight size={12} />
+                      </div>
                     </div>
-                  </div>
-                </AnimatedSection>
+                  </Link>
+                </FadeIn>
               );
             })}
           </div>
@@ -95,18 +125,15 @@ function ServicesListPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <AnimatedSection>
-            <h2 className="text-3xl font-bold text-green-900 mb-4" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>
-              Besoin d'un Service Spécifique ?
-            </h2>
-            <p className="text-gray-600 mb-8">Contactez-nous pour une étude personnalisée de votre projet.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">Demander un Devis <ArrowRight size={18} /></Link>
-              <a href="tel:+237654210842" className="btn-secondary"><Phone size={18} />+237 654 21 08 42</a>
-            </div>
-          </AnimatedSection>
+      <section className="relative py-14 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-green-900" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold mb-3">Besoin d'un Service Spécifique ?</h2>
+          <p className="text-green-200 mb-8">Contactez-nous pour une étude personnalisée de votre projet.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-primary px-8 py-4">Demander un Devis <ArrowRight size={16} /></Link>
+            <a href="tel:+237654210842" className="btn-outline-white px-8 py-4"><Phone size={16} />+237 654 21 08 42</a>
+          </div>
         </div>
       </section>
     </div>
@@ -137,104 +164,101 @@ function ServiceDetailPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className={`py-20 bg-gradient-to-br ${service.color} text-white relative overflow-hidden`}>
-        <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: `url(${service.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+      <section className="relative py-14 sm:py-16 text-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${service.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-green-950/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-white/70 text-sm mb-6">
-            <Link to="/" className="hover:text-white">Accueil</Link>
-            <ChevronRight size={14} />
-            <Link to="/services" className="hover:text-white">Services</Link>
-            <ChevronRight size={14} />
+          <div className="flex items-center gap-2 text-green-400 text-xs mb-6 flex-wrap">
+            <Link to="/" className="hover:text-white transition-colors">Accueil</Link>
+            <ChevronRight size={12} />
+            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
+            <ChevronRight size={12} />
             <span className="text-white">{service.title}</span>
           </div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
-              <Icon size={32} className="text-white" />
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/15 rounded-xl flex items-center justify-center shrink-0">
+              <Icon size={26} className="text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>
-              {service.title}
-            </h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">{service.title}</h1>
           </div>
-          <p className="text-white/90 text-xl max-w-2xl leading-relaxed">{service.shortDesc}</p>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60H1440V20C1440 20 1100 60 720 35C340 10 0 45 0 45V60Z" fill="white" /></svg>
+          <p className="text-green-200 text-base sm:text-lg max-w-2xl">{service.shortDesc}</p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
+      <section className="py-12 sm:py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-10">
             {/* Main */}
             <div className="lg:col-span-2">
-              <AnimatedSection>
-                <h2 className="text-2xl font-bold text-green-900 mb-4">À Propos de Ce Service</h2>
-                <p className="text-gray-600 leading-relaxed text-lg mb-8">{service.description}</p>
-
-                <h3 className="text-xl font-bold text-green-900 mb-4">Ce que nous proposons</h3>
-                <div className="space-y-3 mb-8">
+              <FadeIn>
+                <p className="text-gray-600 leading-relaxed text-base mb-8">{service.description}</p>
+                <h3 className="text-lg font-bold text-green-900 mb-4">Ce que nous proposons</h3>
+                <div className="divide-y divide-gray-100 mb-8">
                   {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors">
-                      <CheckCircle2 size={20} className="text-green-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{feature}</span>
+                    <div key={i} className="flex items-start gap-3 py-3">
+                      <CheckCircle2 size={18} className="text-green-600 shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
-
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full rounded-2xl shadow-lg aspect-video object-cover"
+                  className="w-full rounded-xl shadow-sm aspect-video object-cover"
                 />
-              </AnimatedSection>
+              </FadeIn>
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
-              {/* CTA Card */}
-              <AnimatedSection>
-                <div className="bg-green-900 text-white rounded-2xl p-6 sticky top-24">
-                  <h3 className="text-xl font-bold mb-3">Intéressé par ce service ?</h3>
-                  <p className="text-green-200 text-sm mb-6">Contactez-nous pour une consultation gratuite et un devis personnalisé.</p>
+            <div className="space-y-5">
+              <FadeIn>
+                <div className="bg-green-950 text-white rounded-xl p-6 sticky top-24">
+                  <h3 className="text-lg font-bold mb-2">Intéressé par ce service ?</h3>
+                  <p className="text-green-300 text-sm mb-5">Consultation gratuite et devis personnalisé.</p>
                   <div className="space-y-3">
                     <Link to="/contact" className="btn-primary w-full justify-center">
                       Demander un Devis
                     </Link>
-                    <a href="tel:+237654210842" className="flex items-center justify-center gap-2 text-white/80 hover:text-white text-sm py-2 transition-colors">
-                      <Phone size={16} />
+                    <a href="tel:+237654210842" className="flex items-center justify-center gap-2 text-green-300 hover:text-white text-sm py-2 transition-colors">
+                      <Phone size={15} />
                       +237 654 21 08 42
                     </a>
                   </div>
                 </div>
-              </AnimatedSection>
+              </FadeIn>
 
-              {/* Other services */}
-              <AnimatedSection delay={150}>
-                <div className="bg-gray-50 rounded-2xl p-6">
-                  <h3 className="font-bold text-green-900 mb-4">Autres Services</h3>
-                  <div className="space-y-3">
+              <FadeIn delay={100}>
+                <div className="bg-gray-50 rounded-xl p-5">
+                  <h3 className="font-bold text-green-900 mb-4 text-sm uppercase tracking-wider">Autres Services</h3>
+                  <div className="space-y-2">
                     {relatedServices.map((s) => {
                       const SIcon = iconMap[s.icon] || Building2;
                       return (
                         <Link key={s.id} to={`/services/${s.id}`}
-                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-md transition-all duration-200 group">
-                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center`}>
-                            <SIcon size={18} className="text-white" />
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group">
+                          <div className="w-9 h-9 rounded-lg bg-green-900 flex items-center justify-center group-hover:bg-green-700 transition-colors shrink-0">
+                            <SIcon size={16} className="text-white" />
                           </div>
-                          <span className="font-medium text-gray-800 group-hover:text-green-900 text-sm">{s.title}</span>
-                          <ChevronRight size={16} className="ml-auto text-gray-400 group-hover:text-green-500" />
+                          <span className="font-medium text-gray-700 group-hover:text-green-900 text-sm flex-1">{s.title}</span>
+                          <ChevronRight size={14} className="text-gray-400 shrink-0" />
                         </Link>
                       );
                     })}
-                    <Link to="/services" className="flex items-center gap-2 text-green-500 font-semibold text-sm mt-3 hover:text-green-600">
-                      Voir tous les services <ArrowRight size={14} />
+                    <Link to="/services" className="flex items-center gap-1 text-green-600 font-semibold text-sm mt-2 hover:text-green-700">
+                      Voir tous <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
-              </AnimatedSection>
+              </FadeIn>
             </div>
           </div>
         </div>

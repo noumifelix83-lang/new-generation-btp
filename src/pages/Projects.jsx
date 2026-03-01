@@ -34,13 +34,13 @@ function ProjectCard({ project }) {
   return (
     <>
       <div className="card group cursor-pointer" onClick={() => setShowDetail(true)}>
-        <div className="relative overflow-hidden aspect-video">
+        <div className="relative overflow-hidden aspect-[4/3]">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-green-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-green-950/0 group-hover:bg-green-950/30 transition-colors duration-300" />
           <div className="absolute top-3 right-3">
             <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">{project.year}</span>
           </div>
@@ -126,34 +126,34 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="py-20 bg-gradient-to-br from-green-950 to-green-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+      <section className="relative py-16 sm:py-20 text-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-green-950/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="inline-block bg-green-500/20 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            Notre Portfolio
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}>
-            Nos Réalisations
-          </h1>
-          <p className="text-green-200 text-lg max-w-2xl mx-auto">
+          <p className="text-green-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Notre Portfolio</p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Nos Réalisations</h1>
+          <p className="text-green-200 text-base max-w-2xl mx-auto mb-8">
             Découvrez plus de 200 projets réalisés avec excellence à travers tout le Cameroun.
           </p>
-          <div className="mt-6 flex justify-center gap-6 sm:gap-8">
+          <div className="flex justify-center gap-8 sm:gap-12">
             {[
               { value: '200+', label: 'Projets' },
               { value: '10+', label: 'Villes' },
               { value: '8+', label: 'Secteurs' },
             ].map((s, i) => (
               <div key={i} className="text-center">
-                <div className="text-3xl font-bold text-green-400">{s.value}</div>
-                <div className="text-green-200 text-sm">{s.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-400">{s.value}</div>
+                <div className="text-green-200 text-xs sm:text-sm">{s.label}</div>
               </div>
             ))}
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60H1440V20C1440 20 1100 60 720 35C340 10 0 45 0 45V60Z" fill="white" /></svg>
         </div>
       </section>
 
@@ -194,6 +194,19 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Section header */}
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gray-300" />
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Portfolio</span>
+              <div className="h-px w-12 bg-gray-300" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-green-900 uppercase tracking-wide">
+              Nos Réalisations
+            </h2>
+          </div>
+
           {filtered.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-gray-400 text-6xl mb-4">🔍</div>

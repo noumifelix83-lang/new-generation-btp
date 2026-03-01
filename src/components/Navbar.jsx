@@ -26,9 +26,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+  useEffect(() => { setIsOpen(false); }, [location]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -40,35 +38,40 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isTransparent
           ? 'bg-transparent py-4'
-          : 'bg-white shadow-lg py-2'
+          : 'bg-white border-b border-gray-100 py-2 shadow-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-12">
+
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <Logo light={isTransparent} size={44} />
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <Logo light={isTransparent} size={38} />
             <div>
-              <div className={`font-bold text-sm leading-tight transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-green-900'}`}>
+              <div className={`font-bold text-xs sm:text-sm leading-tight transition-colors duration-300 ${
+                isTransparent ? 'text-white' : 'text-green-900'
+              }`}>
                 New Generation
               </div>
-              <div className={`text-xs transition-colors duration-300 ${isTransparent ? 'text-green-300' : 'text-green-500'}`}>
+              <div className={`text-xs transition-colors duration-300 ${
+                isTransparent ? 'text-green-300' : 'text-green-600'
+              }`}>
                 Engineering BTP MS
               </div>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Nav — only lg+ */}
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                  `px-3 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-green-700 text-white'
                       : isTransparent
                       ? 'text-white/90 hover:bg-white/10 hover:text-white'
                       : 'text-gray-700 hover:bg-green-50 hover:text-green-900'
@@ -80,62 +83,77 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA + Mobile */}
-          <div className="flex items-center gap-3">
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Phone — md+ only */}
             <a
               href="tel:+237654210842"
-              className={`hidden md:flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${
-                isTransparent ? 'text-white hover:text-green-300' : 'text-green-900 hover:text-green-500'
+              className={`hidden md:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200 ${
+                isTransparent ? 'text-white hover:text-green-300' : 'text-green-900 hover:text-green-600'
               }`}
             >
-              <Phone size={16} />
-              654 21 08 42
+              <Phone size={14} />
+              <span className="hidden xl:inline">654 21 08 42</span>
             </a>
+
+            {/* Devis Gratuit button — lg+ only, avoids conflicts with hamburger */}
             <Link
               to="/contact"
-              className="hidden md:inline-flex btn-primary text-sm py-2 px-4"
+              className={`hidden lg:flex items-center gap-2 font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 ${
+                isTransparent
+                  ? 'bg-white/15 hover:bg-white/25 text-white border border-white/30'
+                  : 'bg-green-700 hover:bg-green-800 text-white'
+              }`}
             >
               Devis Gratuit
             </Link>
+
+            {/* Mobile/Tablet hamburger — below lg */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
+              aria-label="Menu"
+              className={`lg:hidden p-2 rounded-lg transition-colors cursor-pointer ${
                 isTransparent ? 'text-white hover:bg-white/10' : 'text-green-900 hover:bg-gray-100'
               }`}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden mt-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === '/'}
-                className={({ isActive }) =>
-                  `block px-4 py-3 rounded-lg font-medium transition-colors duration-200 ${
-                    isActive
-                      ? 'bg-green-500 text-white'
-                      : 'text-gray-700 hover:bg-green-50 hover:text-green-900'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-            <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-2">
+          <div className="lg:hidden mt-2 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <nav className="p-3">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === '/'}
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-3 rounded-lg font-medium text-sm transition-colors duration-200 ${
+                      isActive
+                        ? 'bg-green-700 text-white'
+                        : 'text-gray-700 hover:bg-green-50 hover:text-green-900'
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
+            <div className="px-3 pb-3 pt-1 border-t border-gray-100 flex flex-col gap-2">
               <a
                 href="tel:+237654210842"
-                className="flex items-center gap-2 px-4 py-3 text-green-900 font-semibold"
+                className="flex items-center gap-2 px-4 py-3 text-green-900 font-semibold text-sm"
               >
-                <Phone size={16} />
-                654 21 08 42
+                <Phone size={15} />
+                +237 654 21 08 42
               </a>
-              <Link to="/contact" className="btn-primary text-center justify-center">
+              <Link
+                to="/contact"
+                className="flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold text-sm px-4 py-3 rounded-lg transition-colors cursor-pointer"
+              >
                 Demander un Devis Gratuit
               </Link>
             </div>
