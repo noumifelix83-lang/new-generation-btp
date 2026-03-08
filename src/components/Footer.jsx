@@ -30,10 +30,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <Logo light={true} size={44} />
+              <Logo light={true} size={60} />
               <div>
-                <div className="font-bold text-sm">New Generation</div>
-                <div className="text-green-400 text-xs">Engineering BTP MS</div>
+                <div className="font-bold text-base">New Generation</div>
+                <div className="text-green-400 text-sm font-medium">Engineering BTP MS</div>
+                <div className="text-green-500 text-xs italic mt-0.5">Innover pour construire mieux !</div>
               </div>
             </div>
             <p className="text-green-300 text-sm leading-relaxed mb-5">

@@ -46,14 +46,14 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <Logo light={isTransparent} size={38} />
+            <Logo light={isTransparent} size={46} />
             <div>
-              <div className={`font-bold text-xs sm:text-sm leading-tight transition-colors duration-300 ${
+              <div className={`font-bold text-sm sm:text-base leading-tight transition-colors duration-300 ${
                 isTransparent ? 'text-white' : 'text-green-900'
               }`}>
                 New Generation
               </div>
-              <div className={`text-xs transition-colors duration-300 ${
+              <div className={`text-xs sm:text-sm font-medium transition-colors duration-300 ${
                 isTransparent ? 'text-green-300' : 'text-green-600'
               }`}>
                 Engineering BTP MS

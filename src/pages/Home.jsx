@@ -46,31 +46,31 @@ const stats = [
 const heroSlides = [
   {
     image: '/images/team-terrain.jpeg',
-    label: "Bureau d'Étude Multi-Services · Fondé en 2016",
-    title: "Bâtissons l'Avenir",
-    highlight: 'Ensemble',
-    desc: "Votre partenaire de confiance pour tous vos projets de construction, d'ingénierie et d'architecture au Cameroun.",
+    label: 'New Generation Engineering BTP MS · Yaoundé, Cameroun',
+    title: 'Innover pour',
+    highlight: 'Construire Mieux !',
+    desc: "Bureau d'étude multi-services fondé en 2016. De la conception à la livraison, nous transformons vos projets de construction en réalité avec expertise et professionnalisme.",
   },
   {
     image: '/images/topographie-3.jpeg',
-    label: 'Topographie · Précision & Fiabilité',
-    title: 'Levés Topographiques',
-    highlight: 'de Précision',
-    desc: "Bornage, implantation et cubatures réalisés avec des équipements de pointe pour garantir la conformité de vos ouvrages.",
+    label: 'Topographie · Levés & Implantation de précision',
+    title: 'Votre Terrain,',
+    highlight: 'Maîtrisé à la Précision',
+    desc: "Bornage, levés topographiques et implantation d'ouvrages réalisés avec des équipements de dernière génération. Chaque mesure compte.",
   },
   {
     image: '/images/genie-civil-1.jpeg',
-    label: 'Génie Civil · Structures Durables',
-    title: 'Construire',
-    highlight: 'avec Excellence',
-    desc: "De la fondation à la réception, notre équipe supervise chaque étape pour des ouvrages solides et conformes aux normes.",
+    label: 'Génie Civil · Structures robustes & durables',
+    title: 'Des Fondations',
+    highlight: 'Qui Durent',
+    desc: "Études, plans d'exécution et supervision de chantier pour des ouvrages solides, conformes aux normes et livrés dans les délais convenus.",
   },
   {
     image: '/images/plans-chantier.jpeg',
-    label: 'Architecture · Conception & Suivi',
-    title: 'Concevoir',
-    highlight: 'vos Espaces',
-    desc: "Plans architecturaux, modélisation 3D et suivi de chantier : nous donnons vie à vos projets du premier trait jusqu'à la livraison.",
+    label: 'Architecture · Conception, Plans & Suivi de chantier',
+    title: 'Vos Rêves,',
+    highlight: 'Nos Plans',
+    desc: "Des esquisses aux plans d'exécution, notre bureau d'architecture conçoit des espaces qui allient esthétique, fonctionnalité et durabilité.",
   },
 ];
 
@@ -114,6 +114,16 @@ function HeroSlider() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        {/* Logo — always visible, prominent */}
+        <div className="flex justify-center mb-5 sm:mb-6">
+          <img
+            src="/images/logo.jpeg"
+            alt="NGE BTP ms"
+            className="w-20 h-20 sm:w-28 sm:h-28 object-contain bg-white rounded-2xl p-1.5 shadow-2xl"
+          />
+        </div>
+
         <p
           key={`label-${current}`}
           className="text-green-400 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4 animate-fade-in"
