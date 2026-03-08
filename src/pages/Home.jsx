@@ -52,11 +52,11 @@ const heroSlides = [
     desc: "Bureau d'étude multi-services fondé en 2016. De la conception à la livraison, nous transformons vos projets de construction en réalité avec expertise et professionnalisme.",
   },
   {
-    image: '/images/topographie-3.jpeg',
-    label: 'Topographie · Levés & Implantation de précision',
-    title: 'Votre Terrain,',
-    highlight: 'Maîtrisé à la Précision',
-    desc: "Bornage, levés topographiques et implantation d'ouvrages réalisés avec des équipements de dernière génération. Chaque mesure compte.",
+    image: '/images/nge-plans-review.jpg',
+    label: 'Expertise Terrain · Étude & Révision des Plans',
+    title: 'La Précision,',
+    highlight: 'Notre Signature',
+    desc: "Nos ingénieurs analysent chaque plan avec rigueur sur le terrain. Chaque décision est prise pour garantir la solidité, la conformité et la qualité de votre ouvrage.",
   },
   {
     image: '/images/genie-civil-1.jpeg',
@@ -66,18 +66,26 @@ const heroSlides = [
     desc: "Études, plans d'exécution et supervision de chantier pour des ouvrages solides, conformes aux normes et livrés dans les délais convenus.",
   },
   {
+    image: '/images/topographie-3.jpeg',
+    label: 'Topographie · Levés & Implantation de précision',
+    title: 'Votre Terrain,',
+    highlight: 'Maîtrisé à la Précision',
+    desc: "Bornage, levés topographiques et implantation d'ouvrages réalisés avec des équipements de dernière génération. Chaque mesure compte.",
+  },
+  {
+    image: '/images/dg.jpg',
+    label: 'DJOMO Aubin · Fondateur & Directeur Général',
+    title: 'Une Vision,',
+    highlight: 'Un Leadership',
+    desc: "Fondé par M. DJOMO Aubin en 2016, NGE BTP MS porte une vision claire : bâtir l'avenir du Cameroun avec excellence, innovation et engagement sans faille.",
+    pos: 'center top',
+  },
+  {
     image: '/images/plans-chantier.jpeg',
     label: 'Architecture · Conception, Plans & Suivi de chantier',
     title: 'Vos Rêves,',
     highlight: 'Nos Plans',
     desc: "Des esquisses aux plans d'exécution, notre bureau d'architecture conçoit des espaces qui allient esthétique, fonctionnalité et durabilité.",
-  },
-  {
-    image: '/images/nge-plans-review.jpg',
-    label: 'Suivi de Chantier · Expertise terrain & coordination',
-    title: 'Votre Projet,',
-    highlight: 'Notre Engagement',
-    desc: "Nos ingénieurs assurent un suivi rigoureux de chaque chantier, garantissant qualité d'exécution, respect des normes et livraison dans les délais.",
   },
 ];
 
@@ -112,7 +120,7 @@ function HeroSlider() {
             style={{
               backgroundImage: `url(${slide.image})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: slide.pos || 'center',
             }}
           />
           <div className="absolute inset-0 bg-green-950/82" />

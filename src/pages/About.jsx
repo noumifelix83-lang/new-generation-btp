@@ -116,20 +116,15 @@ export default function AboutPage() {
       {/* STORY */}
       <section className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+          {/* 2-col: PDG poster | text */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <FadeIn>
-              <div className="space-y-4">
-                <img
-                  src="/images/pdg.jpg"
-                  alt="AUBIN DJOMO — PDG New Generation Engineering BTP MS"
-                  className="w-full object-cover rounded-xl shadow-md"
-                />
-                <img
-                  src="/images/nge-plans-review.jpg"
-                  alt="Équipe NGE BTP en train de réviser les plans"
-                  className="w-full aspect-[4/3] object-cover rounded-xl shadow-sm"
-                />
-              </div>
+              <img
+                src="/images/pdg.jpg"
+                alt="AUBIN DJOMO — PDG New Generation Engineering BTP MS"
+                className="w-full rounded-xl shadow-lg"
+              />
             </FadeIn>
             <FadeIn delay={100}>
               <h2 className="text-2xl font-bold text-green-900 mb-6">De l'Ambition à l'Excellence</h2>
@@ -158,6 +153,15 @@ export default function AboutPage() {
               </div>
             </FadeIn>
           </div>
+
+          {/* Wide team-on-site photo below the 2-col */}
+          <FadeIn delay={150} className="mt-10">
+            <img
+              src="/images/nge-plans-review.jpg"
+              alt="Ingénieurs NGE BTP MS en train d'étudier les plans sur chantier"
+              className="w-full aspect-[21/9] object-cover object-center rounded-xl shadow-sm"
+            />
+          </FadeIn>
         </div>
       </section>
 
