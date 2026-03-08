@@ -245,20 +245,20 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {team.map((member, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <div className="bg-white p-5 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white pb-5 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow duration-300 overflow-hidden">
                   {member.photo ? (
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-14 h-14 object-cover object-top mx-auto mb-3 rounded-full border-2 border-green-100"
+                      className="w-full aspect-square object-cover object-top mb-4"
                     />
                   ) : (
-                    <div className={`w-14 h-14 ${member.color} flex items-center justify-center text-white font-bold text-lg mx-auto mb-3`}>
+                    <div className={`w-full aspect-square ${member.color} flex items-center justify-center text-white font-bold text-4xl mb-4`}>
                       {member.initials}
                     </div>
                   )}
-                  <h3 className="font-bold text-green-900 text-sm">{member.name}</h3>
-                  <p className="text-green-600 text-xs mt-1">{member.role}</p>
+                  <h3 className="font-bold text-green-900 text-sm px-3">{member.name}</h3>
+                  <p className="text-green-600 text-xs mt-1 px-3">{member.role}</p>
                 </div>
               </FadeIn>
             ))}
