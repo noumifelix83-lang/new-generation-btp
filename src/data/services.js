@@ -16,7 +16,7 @@ export const services = [
       'Réception des ouvrages',
       'Assistance technique sur chantier',
     ],
-    image: 'https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/genie-civil-1.jpeg',
   },
   {
     id: 'genie-electrique',
@@ -54,7 +54,7 @@ export const services = [
       'Suivi architectural des travaux',
       'Design d\'intérieur et aménagement',
     ],
-    image: 'https://images.pexels.com/photos/8482835/pexels-photo-8482835.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/plans-chantier.jpeg',
   },
   {
     id: 'permis-batir',
@@ -92,7 +92,7 @@ export const services = [
       'Cubatures et calculs de volume',
       'Plans et cartes topographiques',
     ],
-    image: 'https://images.pexels.com/photos/11174197/pexels-photo-11174197.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/topographie-3.jpeg',
   },
   {
     id: 'renovation',

@@ -47,7 +47,7 @@ function ServicesListPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/4442490/pexels-photo-4442490.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundImage: 'url(/images/team-terrain.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

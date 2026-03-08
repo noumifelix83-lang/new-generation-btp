@@ -98,7 +98,7 @@ export default function AboutPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/3860937/pexels-photo-3860937.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundImage: 'url(/images/team-chantier.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -119,8 +119,8 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
               <img
-                src="https://images.pexels.com/photos/3860937/pexels-photo-3860937.jpeg?auto=compress&cs=tinysrgb&w=700"
-                alt="Notre histoire"
+                src="/images/plans-chantier.jpeg"
+                alt="Notre histoire — étude des plans sur chantier"
                 className="w-full aspect-[4/3] object-cover"
               />
             </FadeIn>

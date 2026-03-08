@@ -130,7 +130,7 @@ export default function ProjectsPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundImage: 'url(/images/topographie-2.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

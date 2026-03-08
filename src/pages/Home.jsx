@@ -53,7 +53,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/5298215/pexels-photo-5298215.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+            backgroundImage: 'url(/images/team-terrain.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -174,7 +174,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/8961125/pexels-photo-8961125.jpeg?auto=compress&cs=tinysrgb&w=1200)',
+            backgroundImage: 'url(/images/genie-civil-2.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
