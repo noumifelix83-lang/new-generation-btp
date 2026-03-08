@@ -46,7 +46,11 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <Logo light={isTransparent} size={46} />
+            <div className={`rounded-lg overflow-hidden shadow-sm transition-all duration-300 ${
+              isTransparent ? 'ring-1 ring-white/30' : 'ring-1 ring-green-100'
+            }`}>
+              <Logo light={false} size={52} />
+            </div>
             <div>
               <div className={`font-bold text-sm sm:text-base leading-tight transition-colors duration-300 ${
                 isTransparent ? 'text-white' : 'text-green-900'
