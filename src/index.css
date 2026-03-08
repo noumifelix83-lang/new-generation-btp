@@ -48,6 +48,20 @@
   }
 }
 
+@keyframes progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f0fdf4; }
 ::-webkit-scrollbar-thumb { background: #166534; border-radius: 4px; }

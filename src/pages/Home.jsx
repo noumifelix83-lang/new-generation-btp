@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import {
-  ArrowRight,
+  ArrowRight, ChevronLeft, ChevronRight,
   Building2, Zap, Layers, FileCheck, Map, Wrench, Wind, Home,
   Users, Award, Clock, TrendingUp, Phone
 } from 'lucide-react';
@@ -39,50 +39,162 @@ function FadeIn({ children, className = '', delay = 0 }) {
 const stats = [
   { icon: Users, value: '150+', label: 'Clients Satisfaits' },
   { icon: Award, value: '200+', label: 'Projets Réalisés' },
-  { icon: Clock, value: '8+', label: 'Années d\'Expérience' },
-  { icon: TrendingUp, value: '8', label: 'Domaines d\'Expertise' },
+  { icon: Clock, value: '8+', label: "Années d'Expérience" },
+  { icon: TrendingUp, value: '8', label: "Domaines d'Expertise" },
 ];
+
+const heroSlides = [
+  {
+    image: '/images/team-terrain.jpeg',
+    label: "Bureau d'Étude Multi-Services · Fondé en 2016",
+    title: "Bâtissons l'Avenir",
+    highlight: 'Ensemble',
+    desc: "Votre partenaire de confiance pour tous vos projets de construction, d'ingénierie et d'architecture au Cameroun.",
+  },
+  {
+    image: '/images/topographie-3.jpeg',
+    label: 'Topographie · Précision & Fiabilité',
+    title: 'Levés Topographiques',
+    highlight: 'de Précision',
+    desc: "Bornage, implantation et cubatures réalisés avec des équipements de pointe pour garantir la conformité de vos ouvrages.",
+  },
+  {
+    image: '/images/genie-civil-1.jpeg',
+    label: 'Génie Civil · Structures Durables',
+    title: 'Construire',
+    highlight: 'avec Excellence',
+    desc: "De la fondation à la réception, notre équipe supervise chaque étape pour des ouvrages solides et conformes aux normes.",
+  },
+  {
+    image: '/images/plans-chantier.jpeg',
+    label: 'Architecture · Conception & Suivi',
+    title: 'Concevoir',
+    highlight: 'vos Espaces',
+    desc: "Plans architecturaux, modélisation 3D et suivi de chantier : nous donnons vie à vos projets du premier trait jusqu'à la livraison.",
+  },
+];
+
+function HeroSlider() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const next = useCallback(() => setCurrent(c => (c + 1) % heroSlides.length), []);
+  const prev = useCallback(() => setCurrent(c => (c - 1 + heroSlides.length) % heroSlides.length), []);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [paused, next]);
+
+  return (
+    <section
+      className="relative text-white pt-20 pb-14 sm:pt-28 sm:pb-24 overflow-hidden min-h-[480px] sm:min-h-[560px]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Slides — stacked, fade between them */}
+      {heroSlides.map((slide, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${slide.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+          <div className="absolute inset-0 bg-green-950/82" />
+        </div>
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p
+          key={`label-${current}`}
+          className="text-green-400 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4 animate-fade-in"
+        >
+          {heroSlides[current].label}
+        </p>
+        <h1
+          key={`title-${current}`}
+          className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in"
+        >
+          {heroSlides[current].title}<br />
+          <span className="text-green-400">{heroSlides[current].highlight}</span>
+        </h1>
+        <p
+          key={`desc-${current}`}
+          className="text-green-200 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in"
+        >
+          {heroSlides[current].desc}
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/contact" className="btn-primary text-base px-8 py-4">
+            Demander un Devis Gratuit <ArrowRight size={18} />
+          </Link>
+          <Link to="/realisations" className="btn-outline-white text-base px-8 py-4">
+            Voir nos Réalisations
+          </Link>
+        </div>
+      </div>
+
+      {/* Prev / Next arrows */}
+      <button
+        onClick={prev}
+        aria-label="Diapositive précédente"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/15 hover:bg-white/30 active:bg-white/40 rounded-full flex items-center justify-center transition-colors touch-manipulation"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={next}
+        aria-label="Diapositive suivante"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/15 hover:bg-white/30 active:bg-white/40 rounded-full flex items-center justify-center transition-colors touch-manipulation"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {heroSlides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Aller à la diapositive ${i + 1}`}
+            className={`transition-all duration-300 rounded-full touch-manipulation ${
+              i === current
+                ? 'w-7 h-2 bg-green-400'
+                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Progress bar */}
+      {!paused && (
+        <div className="absolute bottom-0 left-0 right-0 z-20 h-0.5 bg-white/10">
+          <div
+            key={current}
+            className="h-full bg-green-400 origin-left"
+            style={{ animation: 'progress 5s linear forwards' }}
+          />
+        </div>
+      )}
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
 
-      {/* ========== HERO ========== */}
-      <section className="relative text-white pt-20 pb-14 sm:pt-28 sm:pb-24 overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/images/team-terrain.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-green-950/85" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-green-400 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4">
-            Bureau d'Étude Multi-Services · Fondé en 2016
-          </p>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-            Bâtissons l'Avenir<br />
-            <span className="text-green-400">Ensemble</span>
-          </h1>
-          <p className="text-green-200 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Votre partenaire de confiance pour tous vos projets de construction,
-            d'ingénierie et d'architecture au Cameroun.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary text-base px-8 py-4">
-              Demander un Devis Gratuit <ArrowRight size={18} />
-            </Link>
-            <Link to="/realisations" className="btn-outline-white text-base px-8 py-4">
-              Voir nos Réalisations
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* ========== HERO SLIDER ========== */}
+      <HeroSlider />
 
       {/* ========== STATS ========== */}
       <section className="bg-white border-b border-gray-100">
@@ -128,7 +240,6 @@ export default function HomePage() {
                     to={`/services/${service.id}`}
                     className="group flex flex-col bg-white hover:shadow-lg transition-shadow duration-300"
                   >
-                    {/* Image */}
                     <div className="relative overflow-hidden aspect-[4/3]">
                       <img
                         src={service.image}
@@ -137,8 +248,6 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-0 bg-green-950/0 group-hover:bg-green-950/30 transition-colors duration-300" />
                     </div>
-
-                    {/* Content */}
                     <div className="pt-4 pb-5 px-2">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-7 h-7 rounded bg-green-900 flex items-center justify-center shrink-0 group-hover:bg-green-700 transition-colors">
