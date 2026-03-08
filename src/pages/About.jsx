@@ -154,14 +154,7 @@ export default function AboutPage() {
             </FadeIn>
           </div>
 
-          {/* Wide team-on-site photo below the 2-col */}
-          <FadeIn delay={150} className="mt-10">
-            <img
-              src="/images/nge-plans-review.jpg"
-              alt="Ingénieurs NGE BTP MS en train d'étudier les plans sur chantier"
-              className="w-full aspect-[21/9] object-cover object-center rounded-xl shadow-sm"
-            />
-          </FadeIn>
+
         </div>
       </section>
 
