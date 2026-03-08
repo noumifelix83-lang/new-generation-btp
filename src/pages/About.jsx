@@ -44,7 +44,7 @@ function SectionHeader({ label, title, subtitle }) {
 }
 
 const team = [
-  { name: 'DJOMO Aubin', role: 'Directeur Général & Fondateur', initials: 'DA', color: 'bg-green-900' },
+  { name: 'DJOMO Aubin', role: 'Directeur Général & Fondateur', photo: '/images/dg.jpg', initials: 'DA', color: 'bg-green-900' },
   { name: 'Ingénieur Génie Civil', role: 'Responsable Technique GC', initials: 'GC', color: 'bg-green-700' },
   { name: 'Ingénieur Électricien', role: 'Chef de Projet Génie Élec', initials: 'GE', color: 'bg-green-800' },
   { name: 'Architecte Principal', role: 'Responsable Architecture', initials: 'AR', color: 'bg-green-600' },
@@ -118,11 +118,18 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
-              <img
-                src="/images/plans-chantier.jpeg"
-                alt="Notre histoire — étude des plans sur chantier"
-                className="w-full aspect-[4/3] object-cover"
-              />
+              <div className="space-y-4">
+                <img
+                  src="/images/pdg.jpg"
+                  alt="AUBIN DJOMO — PDG New Generation Engineering BTP MS"
+                  className="w-full object-cover rounded-xl shadow-md"
+                />
+                <img
+                  src="/images/nge-plans-review.jpg"
+                  alt="Équipe NGE BTP en train de réviser les plans"
+                  className="w-full aspect-[4/3] object-cover rounded-xl shadow-sm"
+                />
+              </div>
             </FadeIn>
             <FadeIn delay={100}>
               <h2 className="text-2xl font-bold text-green-900 mb-6">De l'Ambition à l'Excellence</h2>
@@ -242,9 +249,17 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <FadeIn key={i} delay={i * 60}>
                 <div className="bg-white p-5 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow duration-300">
-                  <div className={`w-14 h-14 ${member.color} flex items-center justify-center text-white font-bold text-lg mx-auto mb-3`}>
-                    {member.initials}
-                  </div>
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-14 h-14 object-cover object-top mx-auto mb-3 rounded-full border-2 border-green-100"
+                    />
+                  ) : (
+                    <div className={`w-14 h-14 ${member.color} flex items-center justify-center text-white font-bold text-lg mx-auto mb-3`}>
+                      {member.initials}
+                    </div>
+                  )}
                   <h3 className="font-bold text-green-900 text-sm">{member.name}</h3>
                   <p className="text-green-600 text-xs mt-1">{member.role}</p>
                 </div>

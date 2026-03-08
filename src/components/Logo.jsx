@@ -6,7 +6,7 @@
 export default function Logo({ light = false, size = 44 }) {
   return (
     <img
-      src="/images/logo.jpeg"
+      src="/images/logo-clean.png"
       alt="New Generation Engineering BTP MS"
       width={size}
       height={size}

@@ -72,6 +72,13 @@ const heroSlides = [
     highlight: 'Nos Plans',
     desc: "Des esquisses aux plans d'exécution, notre bureau d'architecture conçoit des espaces qui allient esthétique, fonctionnalité et durabilité.",
   },
+  {
+    image: '/images/nge-plans-review.jpg',
+    label: 'Suivi de Chantier · Expertise terrain & coordination',
+    title: 'Votre Projet,',
+    highlight: 'Notre Engagement',
+    desc: "Nos ingénieurs assurent un suivi rigoureux de chaque chantier, garantissant qualité d'exécution, respect des normes et livraison dans les délais.",
+  },
 ];
 
 function HeroSlider() {
@@ -118,9 +125,9 @@ function HeroSlider() {
         {/* Logo — always visible, prominent */}
         <div className="flex justify-center mb-5 sm:mb-6">
           <img
-            src="/images/logo.jpeg"
+            src="/images/logo-clean.png"
             alt="NGE BTP ms"
-            className="w-20 h-20 sm:w-28 sm:h-28 object-contain bg-white rounded-2xl p-1.5 shadow-2xl"
+            className="w-20 h-20 sm:w-28 sm:h-28 object-contain bg-white rounded-2xl p-2 shadow-2xl"
           />
         </div>
 
