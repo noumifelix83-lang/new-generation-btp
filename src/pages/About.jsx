@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Award, Target, Eye, Heart } from 'lucide-react';
+import { ArrowRight, Users, Award, Target, Eye, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function FadeIn({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
@@ -88,6 +88,94 @@ const milestones = [
   { year: '2021', title: '100+ Projets', desc: 'Franchissement du cap des 100 projets réalisés au Cameroun.' },
   { year: '2024', title: "Aujourd'hui", desc: 'Plus de 200 projets réalisés et 150 clients satisfaits à travers tout le Cameroun.' },
 ];
+
+const VISIBLE = 4; // cards visible at once on desktop
+
+function TeamCarousel() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = team.length;
+  const maxIndex = total - 1;
+
+  const prev = useCallback(() => setIndex(i => (i === 0 ? maxIndex : i - 1)), [maxIndex]);
+  const next = useCallback(() => setIndex(i => (i === maxIndex ? 0 : i + 1)), [maxIndex]);
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(next, 3500);
+    return () => clearInterval(t);
+  }, [paused, next]);
+
+  // Reorder team so current index is first
+  const ordered = [...team.slice(index), ...team.slice(0, index)];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Cards row */}
+      <div className="overflow-hidden">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          {ordered.slice(0, VISIBLE).map((member, i) => (
+            <div
+              key={`${member.name}-${i}`}
+              className="bg-white pb-5 shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-500 overflow-hidden"
+            >
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-full aspect-square object-cover object-top mb-4"
+                />
+              ) : (
+                <div className={`w-full aspect-square ${member.color} flex items-center justify-center text-white font-bold text-4xl mb-4`}>
+                  {member.initials}
+                </div>
+              )}
+              <h3 className="font-bold text-green-900 text-sm px-3">{member.name}</h3>
+              <p className="text-green-600 text-xs mt-1 px-3">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          onClick={prev}
+          aria-label="Précédent"
+          className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-green-900 hover:bg-green-50 transition-colors touch-manipulation"
+        >
+          <ChevronLeft size={18} />
+        </button>
+
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {team.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Membre ${i + 1}`}
+              className={`rounded-full transition-all duration-300 touch-manipulation ${
+                i === index ? 'w-6 h-2 bg-green-700' : 'w-2 h-2 bg-gray-300 hover:bg-green-400'
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={next}
+          aria-label="Suivant"
+          className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-green-900 hover:bg-green-50 transition-colors touch-manipulation"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -242,27 +330,7 @@ export default function AboutPage() {
               subtitle="Une équipe pluridisciplinaire d'ingénieurs et de professionnels qualifiés."
             />
           </FadeIn>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {team.map((member, i) => (
-              <FadeIn key={i} delay={i * 60}>
-                <div className="bg-white pb-5 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full aspect-square object-cover object-top mb-4"
-                    />
-                  ) : (
-                    <div className={`w-full aspect-square ${member.color} flex items-center justify-center text-white font-bold text-4xl mb-4`}>
-                      {member.initials}
-                    </div>
-                  )}
-                  <h3 className="font-bold text-green-900 text-sm px-3">{member.name}</h3>
-                  <p className="text-green-600 text-xs mt-1 px-3">{member.role}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <TeamCarousel />
         </div>
       </section>
 
