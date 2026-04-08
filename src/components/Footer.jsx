@@ -40,7 +40,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-green-300 text-sm leading-relaxed mb-5">
-              Bureau d'étude multi-services spécialisé en génie civil, électrique, architecture et topographie. Votre partenaire au Cameroun depuis 2016.
+              Bureau d'étude multi-services spécialisé en génie civil, électrique, architecture et topographie. Votre partenaire au Cameroun depuis 2019.
             </p>
             <div className="text-green-400 text-xs">
               Lun – Sam : 7h30 – 18h00

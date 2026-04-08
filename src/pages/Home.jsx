@@ -39,7 +39,7 @@ function FadeIn({ children, className = '', delay = 0 }) {
 const stats = [
   { icon: Users, value: '150+', label: 'Clients Satisfaits' },
   { icon: Award, value: '200+', label: 'Projets Réalisés' },
-  { icon: Clock, value: '8+', label: "Années d'Expérience" },
+  { icon: Clock, value: '6+', label: "Années d'Expérience" },
   { icon: TrendingUp, value: '8', label: "Domaines d'Expertise" },
 ];
 
@@ -49,7 +49,7 @@ const heroSlides = [
     label: 'New Generation Engineering BTP MS · Yaoundé, Cameroun',
     title: 'Innover pour',
     highlight: 'Construire Mieux !',
-    desc: "Bureau d'étude multi-services fondé en 2016. De la conception à la livraison, nous transformons vos projets de construction en réalité avec expertise et professionnalisme.",
+    desc: "Bureau d'étude multi-services fondé en 2019. De la conception à la livraison, nous transformons vos projets de construction en réalité avec expertise et professionnalisme.",
   },
   {
     image: '/images/nge-plans-review.jpg',

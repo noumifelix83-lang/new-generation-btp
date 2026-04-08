@@ -82,9 +82,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: '2016', title: 'Fondation', desc: 'Création de New Generation Engineering BTP MS par M. DJOMO Aubin.' },
-  { year: '2017', title: 'Ouverture', desc: 'Recrutement des premiers ingénieurs qualifiés et lancement des opérations.' },
-  { year: '2019', title: 'Expansion', desc: 'Extension des services : topographie, froid & clim, immobilier.' },
+  { year: '2019', title: 'Fondation', desc: 'Création officielle de New Generation Engineering BTP MS par M. DJOMO Aubin Igore.' },
+  { year: '2020', title: 'Ouverture', desc: 'Recrutement des premiers ingénieurs qualifiés et lancement des opérations terrain.' },
+  { year: '2021', title: 'Expansion', desc: 'Extension des services : topographie, froid & clim, immobilier et travaux publics.' },
   { year: '2021', title: '100+ Projets', desc: 'Franchissement du cap des 100 projets réalisés au Cameroun.' },
   { year: '2024', title: "Aujourd'hui", desc: 'Plus de 200 projets réalisés et 150 clients satisfaits à travers tout le Cameroun.' },
 ];
@@ -218,10 +218,10 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold text-green-900 mb-6">De l'Ambition à l'Excellence</h2>
               <div className="space-y-4 text-gray-600 text-sm leading-relaxed">
                 <p>
-                  <strong className="text-green-900">New Generation Engineering BTP MS</strong> a été pensée en 2016 par un groupe d'étudiants de divers domaines d'ingénierie. M. DJOMO Aubin, tête pensante du projet, a persévéré malgré les difficultés initiales.
+                  <strong className="text-green-900">New Generation Engineering BTP MS</strong> a été créée en 2019 par M. DJOMO Aubin Igore, avec la vision de révolutionner le secteur de la construction au Cameroun en alliant innovation et qualité d'exécution.
                 </p>
                 <p>
-                  En 2017, il ouvre la direction générale et recrute plusieurs ingénieurs qualifiés en génie civil, génie électrique, topographie, froid et clim et architecture — formant une équipe pluridisciplinaire unie autour d'une même vision.
+                  Dès son lancement, l'entreprise recrute des ingénieurs qualifiés en génie civil, génie électrique, topographie, froid & clim et architecture — formant une équipe pluridisciplinaire unie autour d'une même vision de l'excellence.
                 </p>
                 <p>
                   Aujourd'hui, <strong className="text-green-900">New Generation Engineering BTP MS</strong> est un bureau d'étude multi-services reconnu, avec plus de 200 projets réalisés à travers tout le Cameroun.
@@ -229,7 +229,7 @@ export default function AboutPage() {
               </div>
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
-                  { value: '2016', label: 'Fondée en' },
+                  { value: '2019', label: 'Fondée en' },
                   { value: '8+', label: 'Experts' },
                   { value: '200+', label: 'Projets' },
                 ].map((s, i) => (
